@@ -34,10 +34,15 @@ module "kms_key" {
 | `attributes`               | `[]`                              | Additional attributes (_e.g._ `policy` or `role`)        | No       |
 | `tags`                     | `{}`                              | Additional tags  (_e.g._ `map("Cluster","xyz")`          | No       |
 | `delimiter`                | `-`                               | Delimiter to be used between `namespace`, `stage`, `name`, and `attributes`  | No       |
-| `alias`                    | `alias/parameter_store_key`       | The display name of the alias. The name must start with the word `alias` followed by a forward slash     | No        |
+| `alias`                    | ``                                | The display name of the alias. The name must start with the word `alias` followed by a forward slash     | No        |
 | `deletion_window_in_days`  | `10`                              | Duration in days after which the key is deleted after destruction of the resource    | No        |
 | `enable_key_rotation`      | `true`                            | Specifies whether key rotation is enabled                | No        |
 | `description`              | `Parameter Store KMS master key`  | The description of the key as viewed in AWS console      | No        |
+
+
+__NOTE:__ To use the KMS key with [chamber](https://github.com/segmentio/chamber), the `alias` must be set to `alias/parameter_store_key`.
+
+__NOTE:__ If `alias` is not specified, `format("alias/%v", module.label.id)` will be used instead.
 
 
 ## Outputs

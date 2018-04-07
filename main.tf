@@ -16,6 +16,6 @@ resource "aws_kms_key" "default" {
 }
 
 resource "aws_kms_alias" "default" {
-  name          = "${var.alias}"
+  name          = "${coalesce(var.alias, format("alias/%v", module.label.id))}"
   target_key_id = "${aws_kms_key.default.id}"
 }
