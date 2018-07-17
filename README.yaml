@@ -1,0 +1,73 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-aws-kms-key
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: "APACHE2"
+
+# Canonical GitHub repo
+github_repo: cloudposse/terraform-aws-kms-key
+
+# Badges to display
+badges:
+  - name: "Build Status"
+    image: "https://travis-ci.org/cloudposse/terraform-aws-kms-key.svg?branch=master"
+    url: "https://travis-ci.org/cloudposse/terraform-aws-kms-key"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-kms-key.svg"
+    url: "https://github.com/cloudposse/terraform-aws-kms-key/releases/latest"
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/badge.svg"
+    url: "https://slack.cloudposse.com"
+
+related:
+  - name: "terraform-aws-iam-chamber-user"
+    description: "Terraform module to provision a basic IAM chamber user with access to SSM parameters and KMS key to decrypt secrets, suitable for CI/CD systems (e.g. TravisCI, CircleCI, CodeFresh) or systems which are external to AWS that cannot leverage AWS IAM Instance Profiles"
+    url: "https://github.com/cloudposse/terraform-aws-iam-chamber-user"
+  - name: "terraform-aws-ssm-parameter-store"
+    description: "Terraform module to populate AWS Systems Manager (SSM) Parameter Store with values from Terraform. Works great with Chamber."
+    url: "https://github.com/cloudposse/terraform-aws-ssm-parameter-store"
+  - name: "terraform-aws-ssm-iam-role"
+    description: "Terraform module to provision an IAM role with configurable permissions to access SSM Parameter Store"
+    url: "https://github.com/cloudposse/terraform-aws-ssm-iam-role"
+
+# Short description of this project
+description: |-
+  Terraform module to provision a [KMS](https://aws.amazon.com/kms/) key with alias.
+
+  Can be used with [chamber](https://github.com/segmentio/chamber) for managing secrets by storing them in Amazon EC2 Systems Manager Parameter Store.
+
+  * https://aws.amazon.com/systems-manager/features
+  * https://aws.amazon.com/blogs/mt/the-right-way-to-store-secrets-using-parameter-store
+
+# How to use this project
+usage: |-
+  ```hcl
+  module "kms_key" {
+    source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=master"
+    namespace               = "cp"
+    stage                   = "prod"
+    name                    = "app"
+    description             = "KMS key for chamber"
+    deletion_window_in_days = 10
+    enable_key_rotation     = "true"
+    alias                   = "alias/parameter_store_key"
+  }
+  ```
+
+include:
+  - "docs/targets.md"
+  - "docs/terraform.md"
+
+# Contributors to this project
+contributors:
+  - name: "Andriy Knysh"
+    github: "aknysh"
