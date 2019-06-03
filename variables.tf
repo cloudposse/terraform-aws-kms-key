@@ -1,32 +1,32 @@
 variable "namespace" {
-  type        = "string"
+  type        = string
   description = "Namespace (e.g. `cp` or `cloudposse`)"
 }
 
 variable "stage" {
-  type        = "string"
+  type        = string
   description = "Stage (e.g. `prod`, `dev`, `staging`)"
 }
 
 variable "name" {
-  type        = "string"
+  type        = string
   description = "Application or solution name (e.g. `app`)"
 }
 
 variable "delimiter" {
-  type        = "string"
+  type        = string
   default     = "-"
   description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
 }
 
 variable "attributes" {
-  type        = "list"
+  type        = list(string)
   default     = []
   description = "Additional attributes (e.g. `1`)"
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map(string)
   default     = {}
   description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)"
 }
@@ -42,13 +42,14 @@ variable "enable_key_rotation" {
 }
 
 variable "description" {
-  type        = "string"
+  type        = string
   default     = "Parameter Store KMS master key"
   description = "The description of the key as viewed in AWS console"
 }
 
 variable "alias" {
-  type        = "string"
+  type        = string
   default     = ""
   description = "The display name of the alias. The name must start with the word `alias` followed by a forward slash"
 }
+
