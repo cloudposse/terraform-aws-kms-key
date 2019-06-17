@@ -32,12 +32,14 @@ variable "tags" {
 }
 
 variable "deletion_window_in_days" {
+  type        = number
   default     = 10
   description = "Duration in days after which the key is deleted after destruction of the resource"
 }
 
 variable "enable_key_rotation" {
-  default     = "true"
+  type        = bool
+  default     = true
   description = "Specifies whether key rotation is enabled"
 }
 
