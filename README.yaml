@@ -51,16 +51,16 @@ description: |-
 # How to use this project
 usage: |-
   ```hcl
-  module "kms_key" {
-    source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=master"
-    namespace               = "eg"
-    stage                   = "test"
-    name                    = "chamber"
-    description             = "KMS key for chamber"
-    deletion_window_in_days = 10
-    enable_key_rotation     = true
-    alias                   = "alias/parameter_store_key"
-  }
+    module "kms_key" {
+      source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=master"
+      namespace               = "eg"
+      stage                   = "test"
+      name                    = "chamber"
+      description             = "KMS key for chamber"
+      deletion_window_in_days = 10
+      enable_key_rotation     = true
+      alias                   = "alias/parameter_store_key"
+    }
   ```
 
 include:
@@ -71,3 +71,7 @@ include:
 contributors:
   - name: "Andriy Knysh"
     github: "aknysh"
+  - name: "Erik Osterman"
+    github: "osterman"
+  - name: "Igor Rodionov"
+    github: "goruha"
