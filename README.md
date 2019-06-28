@@ -53,16 +53,16 @@ Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest re
 
 
 ```hcl
-  module "kms_key" {
-    source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=master"
-    namespace               = "eg"
-    stage                   = "test"
-    name                    = "chamber"
-    description             = "KMS key for chamber"
-    deletion_window_in_days = 10
-    enable_key_rotation     = true
-    alias                   = "alias/parameter_store_key"
-  }
+    module "kms_key" {
+      source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=master"
+      namespace               = "eg"
+      stage                   = "test"
+      name                    = "chamber"
+      description             = "KMS key for chamber"
+      deletion_window_in_days = 10
+      enable_key_rotation     = true
+      alias                   = "alias/parameter_store_key"
+    }
 ```
 
 
