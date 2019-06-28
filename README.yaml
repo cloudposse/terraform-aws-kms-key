@@ -18,9 +18,9 @@ github_repo: cloudposse/terraform-aws-kms-key
 
 # Badges to display
 badges:
-  - name: "Build Status"
-    image: "https://travis-ci.org/cloudposse/terraform-aws-kms-key.svg?branch=master"
-    url: "https://travis-ci.org/cloudposse/terraform-aws-kms-key"
+  - name: "Codefresh Build Status"
+    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-kms-key?type=cf-1"
+    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5d163820e38a0455f412f79f"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-kms-key.svg"
     url: "https://github.com/cloudposse/terraform-aws-kms-key/releases/latest"
@@ -51,16 +51,16 @@ description: |-
 # How to use this project
 usage: |-
   ```hcl
-  module "kms_key" {
-    source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=master"
-    namespace               = "cp"
-    stage                   = "prod"
-    name                    = "app"
-    description             = "KMS key for chamber"
-    deletion_window_in_days = 10
-    enable_key_rotation     = "true"
-    alias                   = "alias/parameter_store_key"
-  }
+      module "kms_key" {
+        source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=master"
+        namespace               = "eg"
+        stage                   = "test"
+        name                    = "chamber"
+        description             = "KMS key for chamber"
+        deletion_window_in_days = 10
+        enable_key_rotation     = true
+        alias                   = "alias/parameter_store_key"
+      }
   ```
 
 include:
@@ -71,3 +71,7 @@ include:
 contributors:
   - name: "Andriy Knysh"
     github: "aknysh"
+  - name: "Erik Osterman"
+    github: "osterman"
+  - name: "Igor Rodionov"
+    github: "goruha"
