@@ -8,6 +8,6 @@ module "kms_key" {
   stage                   = var.stage
   name                    = var.name
   description             = "Test KMS key"
-  deletion_window_in_days = 1
+  deletion_window_in_days = 7
   enable_key_rotation     = false
 }
