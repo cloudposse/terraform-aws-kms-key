@@ -1,19 +1,19 @@
 output "key_arn" {
-  value       = aws_kms_key.default.arn
+  value       = module.kms_key.key_arn
   description = "Key ARN"
 }
 
 output "key_id" {
-  value       = aws_kms_key.default.key_id
+  value       = module.kms_key.key_id
   description = "Key ID"
 }
 
 output "alias_arn" {
-  value       = aws_kms_alias.default.arn
+  value       = module.kms_key.alias_arn
   description = "Alias ARN"
 }
 
 output "alias_name" {
-  value       = aws_kms_alias.default.name
+  value       = module.kms_key.alias_name
   description = "Alias name"
 }
