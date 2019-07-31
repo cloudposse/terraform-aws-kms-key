@@ -13,6 +13,7 @@ resource "aws_kms_key" "default" {
   deletion_window_in_days = "${var.deletion_window_in_days}"
   enable_key_rotation     = "${var.enable_key_rotation}"
   tags                    = "${module.label.tags}"
+  policy                  = "${var.policy}"
 }
 
 resource "aws_kms_alias" "default" {
