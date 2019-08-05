@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "default" {
 
 module "policy" {
   source           = "git::https://github.com/cloudposse/terraform-aws-iam-policy-document-aggregator.git?ref=tags/0.1.2"
-  source_documents = ["${data.aws_iam_policy_document.default.json}" ,"${var.policy}"]
+  source_documents = ["${data.aws_iam_policy_document.default.json}", "${var.policy}"]
 }
 
 resource "aws_kms_key" "default" {
