@@ -1,5 +1,6 @@
 module "label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.3"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.11.1"
+  enabled    = "${var.enabled}"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
   name       = "${var.name}"
@@ -33,6 +34,8 @@ module "policy" {
 }
 
 resource "aws_kms_key" "default" {
+  count = "${var.enabled == "true" ? 1 : 0}"
+
   description             = "${var.description}"
   deletion_window_in_days = "${var.deletion_window_in_days}"
   enable_key_rotation     = "${var.enable_key_rotation}"
@@ -41,6 +44,8 @@ resource "aws_kms_key" "default" {
 }
 
 resource "aws_kms_alias" "default" {
+  count = "${var.enabled == "true" ? 1 : 0}"
+
   name          = "${coalesce(var.alias, format("alias/%v", module.label.id))}"
   target_key_id = "${aws_kms_key.default.id}"
 }
