@@ -1,3 +1,9 @@
+variable "enabled" {
+  type        = bool
+  default     = true
+  description = "Set to false to prevent the module from creating any resources"
+}
+
 variable "namespace" {
   type        = string
   description = "Namespace (e.g. `eg` or `cp`)"
@@ -54,4 +60,10 @@ variable "alias" {
   type        = string
   default     = ""
   description = "The display name of the alias. The name must start with the word `alias` followed by a forward slash"
+}
+
+variable "policy" {
+  type        = string
+  default     = ""
+  description = "A valid kms policy JSON document. Note that if the policy document is not specific enough (but still valid), Terraform may view the policy as constantly changing in a terraform plan. In this case, please make sure you use the verbose/specific version of the policy."
 }
