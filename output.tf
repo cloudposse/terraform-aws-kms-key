@@ -4,7 +4,7 @@ output "key_arn" {
 }
 
 output "key_id" {
-  value       = join("", aws_kms_alias.default.*.id)
+  value       = join("", aws_kms_key.default.*.key_id)
   description = "Key ID"
 }
 
