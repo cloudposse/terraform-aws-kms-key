@@ -1,4 +1,3 @@
----
 #
 # This is the canonical configuration for the `README.md`
 # Run `make readme` to rebuild the `README.md`
@@ -6,28 +5,21 @@
 
 # Name of this project
 name: terraform-aws-kms-key
-
 # Logo for this project
 #logo: docs/logo.png
 
 # License of this project
 license: "APACHE2"
-
 # Canonical GitHub repo
 github_repo: cloudposse/terraform-aws-kms-key
-
 # Badges to display
 badges:
-  - name: "Codefresh Build Status"
-    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-kms-key?type=cf-1"
-    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5d163820e38a0455f412f79f"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-kms-key.svg"
     url: "https://github.com/cloudposse/terraform-aws-kms-key/releases/latest"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
-
 related:
   - name: "terraform-aws-iam-chamber-user"
     description: "Terraform module to provision a basic IAM chamber user with access to SSM parameters and KMS key to decrypt secrets, suitable for CI/CD systems (e.g. TravisCI, CircleCI, CodeFresh) or systems which are external to AWS that cannot leverage AWS IAM Instance Profiles"
@@ -38,7 +30,6 @@ related:
   - name: "terraform-aws-ssm-iam-role"
     description: "Terraform module to provision an IAM role with configurable permissions to access SSM Parameter Store"
     url: "https://github.com/cloudposse/terraform-aws-ssm-iam-role"
-
 # Short description of this project
 description: |-
   Terraform module to provision a [KMS](https://aws.amazon.com/kms/) key with alias.
@@ -47,7 +38,6 @@ description: |-
 
   * https://aws.amazon.com/systems-manager/features
   * https://aws.amazon.com/blogs/mt/the-right-way-to-store-secrets-using-parameter-store
-
 # How to use this project
 usage: |-
   ```hcl
@@ -62,11 +52,9 @@ usage: |-
         alias                   = "alias/parameter_store_key"
       }
   ```
-
 include:
   - "docs/targets.md"
   - "docs/terraform.md"
-
 # Contributors to this project
 contributors:
   - name: "Andriy Knysh"
