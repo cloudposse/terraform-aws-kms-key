@@ -52,10 +52,12 @@ usage: |-
         alias                   = "alias/parameter_store_key"
       }
   ```
+
 include:
   - "docs/targets.md"
   - "docs/terraform.md"
 # Contributors to this project
+
 contributors:
   - name: "Andriy Knysh"
     github: "aknysh"
