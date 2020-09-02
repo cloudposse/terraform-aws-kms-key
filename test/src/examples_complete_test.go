@@ -37,10 +37,9 @@ func TestExamplesComplete(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the value of an output variable
-	keyId := terraform.Output(t, terraformOptions, "key_id")
-	expectedKeyId := "eg-test-kms-key-test-" + randId
+	keyArn := terraform.Output(t, terraformOptions, "key_arn")
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, expectedKeyId, keyId)
+	assert.Contains(t, keyArn, "arn:aws:kms:us-east-2")
 
 	// Run `terraform output` to get the value of an output variable
 	aliasName := terraform.Output(t, terraformOptions, "alias_name")
