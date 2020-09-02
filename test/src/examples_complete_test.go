@@ -1,7 +1,10 @@
 package test
 
 import (
+	"math/rand"
+	"strconv"
 	"testing"
+	"time"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
@@ -11,12 +14,20 @@ import (
 func TestExamplesComplete(t *testing.T) {
 	t.Parallel()
 
+	rand.Seed(time.Now().UnixNano())
+
+	randId := strconv.Itoa(rand.Intn(100000))
+	attributes := []string{randId}
+
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../../examples/complete",
 		Upgrade:      true,
 		// Variables to pass to our Terraform code using -var-file options
-		VarFiles: []string{"fixtures.us-west-1.tfvars"},
+		VarFiles: []string{"fixtures.us-east-2.tfvars"},
+		Vars: map[string]interface{}{
+			"attributes": attributes,
+		},
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
@@ -26,15 +37,14 @@ func TestExamplesComplete(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the value of an output variable
-	keyArn := terraform.Output(t, terraformOptions, "key_arn")
-
+	keyId := terraform.Output(t, terraformOptions, "key_id")
+	expectedKeyId := "eg-test-kms-key-test-" + randId
 	// Verify we're getting back the outputs we expect
-	assert.Contains(t, keyArn, "arn:aws:kms:us-west-1:126450723953:key/")
+	assert.Equal(t, expectedKeyId, keyId)
 
 	// Run `terraform output` to get the value of an output variable
 	aliasName := terraform.Output(t, terraformOptions, "alias_name")
-
-	expectedAliasName := "alias/eg-test-kms-key-test"
+	expectedAliasName := "alias/eg-test-kms-key-test-" + randId
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedAliasName, aliasName)
 }
