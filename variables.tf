@@ -25,5 +25,69 @@ variable "alias" {
 variable "policy" {
   type        = string
   default     = ""
-  description = "A valid KMS policy JSON document. Note that if the policy document is not specific enough (but still valid), Terraform may view the policy as constantly changing in a terraform plan. In this case, please make sure you use the verbose/specific version of the policy."
+  description = <<-EOF
+    A valid KMS policy JSON document. Note that if the policy document is not
+    specific enough (but still valid), Terraform may view the policy as
+    constantly changing in a terraform plan. In this case, please make sure you
+    use the verbose/specific version of the policy. This variable takes
+    precedence over other 'policy_*' variables.
+  EOF
+}
+
+variable "policy_key_admins" {
+  type        = list(string)
+  default     = null
+  description = <<-EOF
+    A list of AWS principals allowed to administer this key. You can specify the
+    ARNs of IAM users or groups, or AWS account IDs.
+
+    If you do not provide any value for this variable, access will be granted to
+    the entire account. If you do not want any principal to have this access,
+    specify [].
+
+    This variable is ignored if the 'policy' variable is set.
+  EOF
+}
+
+variable "policy_key_users" {
+  type        = list(string)
+  default     = null
+  description = <<-EOF
+    A list of AWS principals allowed to use this key for cryptographic
+    operations. You can specify the ARNs of IAM users or groups, or AWS account
+    IDs.
+
+    If you do not provide any value for this variable, access will be granted to
+    the entire account. If you do not want any principal to have this access,
+    specify [].
+
+    This variable is ignored if the 'policy' variable is set.
+  EOF
+}
+
+variable "policy_key_grantors" {
+  type        = list(string)
+  default     = null
+  description = <<-EOF
+    A list of AWS principals allowed to grant use of this key to AWS resources.
+    You can specify the ARNs of IAM users or groups, or AWS account
+    IDs.
+
+    If you do not provide any value for this variable, access will be granted to
+    the entire account. If you do not want any principal to have this access,
+    specify [].
+
+    This variable is ignored if the 'policy' variable is set.
+  EOF
+}
+
+variable "policy_extra_statements" {
+  type        = list(string)
+  default     = []
+  description = <<-EOF
+    A list of additional IAM policy statements to attach to the key policy.
+    These statements should be in JSON (string) format.
+
+    This variable is ignored if the 'policy' variable is set.
+  EOF
 }
