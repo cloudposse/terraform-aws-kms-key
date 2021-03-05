@@ -157,6 +157,7 @@ Available targets:
 
 | Name |
 |------|
+| [aws_caller_identity](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) |
 | [aws_kms_alias](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) |
 | [aws_kms_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) |
 
@@ -178,7 +179,12 @@ Available targets:
 | label\_order | The naming order of the id output and Name tag.<br>Defaults to ["namespace", "environment", "stage", "name", "attributes"].<br>You can omit any of the 5 elements, but at least one must be present. | `list(string)` | `null` | no |
 | name | Solution name, e.g. 'app' or 'jenkins' | `string` | `null` | no |
 | namespace | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
-| policy | A valid KMS policy JSON document. Note that if the policy document is not specific enough (but still valid), Terraform may view the policy as constantly changing in a terraform plan. In this case, please make sure you use the verbose/specific version of the policy. | `string` | `""` | no |
+| policy | A valid KMS policy JSON document. Note that if the policy document is not<br>specific enough (but still valid), Terraform may view the policy as<br>constantly changing in a terraform plan. In this case, please make sure you<br>use the verbose/specific version of the policy. This variable takes<br>precedence over other 'policy\_*' variables. | `string` | `""` | no |
+| policy\_extra\_statements | A list of additional IAM policy statements to attach to the key policy.<br>These statements should be in JSON (string) format.<br><br>This variable is ignored if the 'policy' variable is set. | `list(string)` | `[]` | no |
+| policy\_key\_admins | A list of AWS principals allowed to administer this key. You can specify<br>ARNs of IAM users/roles, and AWS account IDs.<br><br>If you do not provide any value for this variable, access will be granted to<br>the entire account. If you do not want any principal to have this access,<br>specify [].<br><br>This variable is ignored if the 'policy' variable is set. | `list(string)` | `null` | no |
+| policy\_key\_aws\_services | A list of AWS services allowed to use this key.<br><br>This variable is ignored if the 'policy' variable is set. | `list(string)` | `[]` | no |
+| policy\_key\_grantors | A list of AWS principals allowed to grant use of this key to AWS resources.<br>You can specify ARNs of IAM users/roles, and AWS account IDs.<br><br>If you do not provide any value for this variable, access will be granted to<br>the entire account. If you do not want any principal to have this access,<br>specify [].<br><br>This variable is ignored if the 'policy' variable is set. | `list(string)` | `null` | no |
+| policy\_key\_users | A list of AWS principals allowed to use this key for cryptographic<br>operations. You can specify ARNs of IAM users/roles, and AWS account IDs.<br><br>If you do not provide any value for this variable, access will be granted to<br>the entire account. If you do not want any principal to have this access,<br>specify [].<br><br>This variable is ignored if the 'policy' variable is set. | `list(string)` | `null` | no |
 | regex\_replace\_chars | Regex to replace chars with empty string in `namespace`, `environment`, `stage` and `name`.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | stage | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | tags | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
