@@ -67,6 +67,21 @@ locals {
         }
         Resource = "*"
       }],
+      length(var.policy_key_aws_services) == 0 ? [] : [{
+        Sid    = "AWS service usage"
+        Effect = "Allow"
+        Action = [
+          "kms:Encrypt",
+          "kms:Decrypt",
+          "kms:ReEncrypt*",
+          "kms:GenerateDataKey*",
+          "kms:DescribeKey"
+        ]
+        Principal = {
+          Service = var.policy_key_aws_services
+        }
+        Resource = "*"
+      }],
       length(local.policy_key_grantors) == 0 ? [] : [{
         Sid    = "Allow attachment of persistent resources"
         Effect = "Allow"
