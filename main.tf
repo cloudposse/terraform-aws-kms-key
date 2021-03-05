@@ -29,7 +29,7 @@ locals {
     Version = "2012-10-17"
     Statement = concat(
       length(local.policy_key_admins) == 0 ? [] : [{
-        Sid = "Allow access for Key Administrators"
+        Sid    = "Allow access for Key Administrators"
         Effect = "Allow"
         Action = [
           "kms:Create*",
@@ -53,7 +53,7 @@ locals {
         Resource = "*"
       }],
       length(local.policy_key_users) == 0 ? [] : [{
-        Sid = "Allow use of the key"
+        Sid    = "Allow use of the key"
         Effect = "Allow"
         Action = [
           "kms:Encrypt",
@@ -68,7 +68,7 @@ locals {
         Resource = "*"
       }],
       length(local.policy_key_grantors) == 0 ? [] : [{
-        Sid = "Allow attachment of persistent resources"
+        Sid    = "Allow attachment of persistent resources"
         Effect = "Allow"
         Action = [
           "kms:CreateGrant",
