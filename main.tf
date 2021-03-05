@@ -15,9 +15,9 @@ resource "aws_kms_alias" "default" {
 
 locals {
   # Set default of "all of this account" for policy groups
-  policy_key_admins   = var.policy_key_admins != null ? var.policy_key_admins : [data.aws_caller_identity.current.account_id]
-  policy_key_users    = var.policy_key_users != null ? var.policy_key_users : [data.aws_caller_identity.current.account_id]
-  policy_key_grantors = var.policy_key_grantors != null ? var.policy_key_grantors : [data.aws_caller_identity.current.account_id]
+  policy_key_admins   = var.policy_key_admins != null ? var.policy_key_admins : ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+  policy_key_users    = var.policy_key_users != null ? var.policy_key_users : ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+  policy_key_grantors = var.policy_key_grantors != null ? var.policy_key_grantors : ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
 }
 
 data "aws_caller_identity" "current" {}
