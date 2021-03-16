@@ -5,6 +5,7 @@ resource "aws_kms_key" "default" {
   policy                  = var.policy
   tags                    = module.this.tags
   description             = var.description
+  key_usage               = var.key_usage
 }
 
 resource "aws_kms_alias" "default" {
