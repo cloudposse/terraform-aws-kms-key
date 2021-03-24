@@ -1,10 +1,12 @@
 resource "aws_kms_key" "default" {
-  count                   = module.this.enabled ? 1 : 0
-  deletion_window_in_days = var.deletion_window_in_days
-  enable_key_rotation     = var.enable_key_rotation
-  policy                  = var.policy != "" ? var.policy : local.default_policy
-  tags                    = module.this.tags
-  description             = var.description
+  count                    = module.this.enabled ? 1 : 0
+  deletion_window_in_days  = var.deletion_window_in_days
+  enable_key_rotation      = var.enable_key_rotation
+  policy                   = var.policy != "" ? var.policy : local.default_policy
+  tags                     = module.this.tags
+  description              = var.description
+  key_usage                = var.key_usage
+  customer_master_key_spec = var.customer_master_key_spec
 }
 
 resource "aws_kms_alias" "default" {
