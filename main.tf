@@ -7,6 +7,7 @@ resource "aws_kms_key" "default" {
   description              = var.description
   key_usage                = var.key_usage
   customer_master_key_spec = var.customer_master_key_spec
+  multi_region             = var.multi_region
 }
 
 resource "aws_kms_alias" "default" {
