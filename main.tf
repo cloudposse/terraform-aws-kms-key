@@ -5,6 +5,7 @@ resource "aws_kms_key" "default" {
   policy                  = var.policy
   tags                    = module.this.tags
   description             = var.description
+  multi_region            = true
 }
 
 resource "aws_kms_alias" "default" {
