@@ -3,7 +3,7 @@
 <!-- markdownlint-disable -->
 <a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/terraform-aws-kms-key/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
     <p align="right">
-<a href="https://github.com/cloudposse/terraform-aws-kms-key/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-kms-key.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-kms-key/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-kms-key.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+<a href="https://github.com/cloudposse/terraform-aws-kms-key/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-kms-key.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-kms-key/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-kms-key.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
 <!-- markdownlint-restore -->
 
 <!--
@@ -81,18 +81,6 @@ Can be used with [chamber](https://github.com/segmentio/chamber) for managing se
 
 
 <!-- markdownlint-disable -->
-## Makefile Targets
-```text
-Available targets:
-
-  help                                Help screen
-  help/all                            Display help for all targets
-  help/short                          This help short screen
-  lint                                Lint terraform code
-
-```
-<!-- markdownlint-restore -->
-<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
@@ -159,6 +147,11 @@ Available targets:
 | <a name="output_key_arn"></a> [key\_arn](#output\_key\_arn) | Key ARN |
 | <a name="output_key_id"></a> [key\_id](#output\_key\_id) | Key ID |
 <!-- markdownlint-restore -->
+
+
+
+
+
 
 
 ## Related Projects
